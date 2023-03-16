@@ -6,4 +6,6 @@ to get the application up and running:
 
 clone the repository:
 
-run npm i and npm start
+run: 
+npm i
+npm start
