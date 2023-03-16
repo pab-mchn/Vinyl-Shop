@@ -7,5 +7,7 @@ to get the application up and running:
 clone the repository:
 
 run: 
+
 npm i
+
 npm start
