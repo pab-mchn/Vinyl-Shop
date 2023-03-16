@@ -2,14 +2,14 @@ import { useContext } from "react";
 import { dataContext } from "../Context/DataContext";
 
 const CartItemCounter = ({ product }) => {
-  const { cart, setCart, quantity, setQuanity, addProduct } = useContext(dataContext);
+  const { cart, setCart, addProduct } = useContext(dataContext);
 
   const decrese = () => {
-    const newProductQuanty = [product];
-    newProductQuanty.map((element) => {
-      element.quanty !== 1 && setQuanity((element.quanty -= 1));
-      return setCart(cart, { ...product, quanty: quantity });
-    });
+    const prdoductrepeat = cart.find((item) => item.id === product.id);
+    prdoductrepeat.quanty !== 1 &&
+      setCart(
+        cart.map((item) => (item.id === product.id ? { ...prdoductrepeat, quanty: prdoductrepeat.quanty - 1 } : item))
+      );
   };
   return (
     <>

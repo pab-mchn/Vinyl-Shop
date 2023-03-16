@@ -2,9 +2,14 @@ import { useState } from "react";
 import "./Navbar.css";
 import CartContent from "../CartContent/CartContent";
 
-const Navbar = () => {
-  const [modal, setModal] = useState(false);
+import TotalItems from "../CartContent/TotalItems";
 
+import { useContext } from "react";
+import { dataContext } from "../Context/DataContext";
+
+const Navbar = () => {
+  const { cart } = useContext(dataContext);
+  const [modal, setModal] = useState(false);
   const openModal = () => {
     setModal(!modal);
   };
@@ -15,6 +20,7 @@ const Navbar = () => {
           <h1 className='navbar-logo'>Shop.</h1>
           <h2 className='seeCarrito' onClick={openModal}>
             🛒
+            {cart.length > 0 ? <TotalItems /> : null}
           </h2>
         </nav>
       </div>
